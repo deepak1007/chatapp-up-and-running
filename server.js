@@ -18,7 +18,7 @@ const app = express();
 const Dbname = "ChatAppDB";
 let connectedObj;
 
-const server = app.listen(process.env.PORT || 8000, '0.0.0.0', () => {
+const server = app.listen(process.env.PORT || 8000, () => {
     console.log('Server started!')
 });
 
@@ -302,6 +302,10 @@ io.on('connection',(client)=>{
 
 //socket------------------------------------------>
 
+
+app.get('/', (req, res)=>{
+    res.send("hello dear");
+})
 
 //routes----------------------------------------------->
 app.post('/login', bodyParser.json(), (req, res)=>{
