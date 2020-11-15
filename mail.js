@@ -15,7 +15,8 @@ exports.sendMail = function(from, to, subject,  htmlmsg){
             secure:false,
             auth:
             {
-             
+              email: process.env.MAILER_EMAIL,
+              pass : process.env.MAILER_PASS
               
     
             }
