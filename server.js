@@ -1,5 +1,4 @@
 require('dotenv').config()
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -45,6 +44,7 @@ app.use(cors());
     optionsSuccessStatus: 200,
     credentials: true
 }));*/
+app.use(express.static(chatapp));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/upload', {cacheControl: true, setHeaders: (res, path)=>{
