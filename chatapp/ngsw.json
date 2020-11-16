@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1605504518427,
+  "timestamp": 1605524304305,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -8,21 +8,21 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/6-es2015.7df6fa31b309aabea75f.js",
-        "/6-es5.7df6fa31b309aabea75f.js",
+        "/6-es2015.f30c552d78fa3dead9c7.js",
+        "/6-es5.f30c552d78fa3dead9c7.js",
         "/7-es2015.0e085ceff835dcf00999.js",
         "/7-es5.0e085ceff835dcf00999.js",
         "/common-es2015.5b6a6f79ba28ea1ad0d4.js",
         "/common-es5.5b6a6f79ba28ea1ad0d4.js",
         "/favicon.ico",
         "/index.html",
-        "/main-es2015.4f8ec3498a7d6659b6cc.js",
-        "/main-es5.4f8ec3498a7d6659b6cc.js",
+        "/main-es2015.392e42c6247ce055414c.js",
+        "/main-es5.392e42c6247ce055414c.js",
         "/manifest.webmanifest",
         "/polyfills-es2015.ce6159eca758d80e5f5f.js",
         "/polyfills-es5.630c9cbb57ccd5c170c5.js",
-        "/runtime-es2015.6dff384f9056a1eda573.js",
-        "/runtime-es5.6dff384f9056a1eda573.js",
+        "/runtime-es2015.f28c16c2b3029632c216.js",
+        "/runtime-es5.f28c16c2b3029632c216.js",
         "/scripts.9fb1828ac7a95da6c7ed.js",
         "/styles.8b644351156044c6b3b6.css"
       ],
@@ -69,6 +69,7 @@
         "/assets/icons/icon-144x144.png",
         "/assets/icons/icon-152x152.png",
         "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-256x256.png",
         "/assets/icons/icon-384x384.png",
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
@@ -82,6 +83,7 @@
         "/assets/icons/sign-up.png",
         "/assets/icons/stories.png",
         "/assets/icons/users.png",
+        "/assets/manifest.zip",
         "/assets/pngtree mobile short message.txt",
         "/assets/removedbg/background-removebg-preview.png",
         "/assets/removedbg/undraw_friends_online_klj6-removebg-preview.png",
@@ -108,18 +110,19 @@
     {
       "name": "profile",
       "patterns": [
-        "https:\\/\\/chatep\\.azurewebsites\\.net\\/.*"
+        "https:\\/\\/chatep\\.azurewebsites\\.net\\/get-details\\/"
       ],
       "strategy": "freshness",
       "maxSize": 20,
       "maxAge": 43200000,
-      "timeoutMs": 5000,
+      "timeoutMs": 3000,
       "version": 1
     },
     {
       "name": "friends",
       "patterns": [
-        "https:\\/\\/chatep\\.azurewebsites\\.net\\/get-connection-list\\/"
+        "https:\\/\\/chatep\\.azurewebsites\\.net\\/get-connection-list\\/",
+        "https:\\/\\/chatep\\.azurewebsites\\.net\\/get-requests-list\\/"
       ],
       "strategy": "freshness",
       "maxSize": 20,
@@ -130,8 +133,8 @@
   ],
   "hashTable": {
     "/5267.10fe5bf138ef6b968654.jpg": "a7742ae32095b9036a809d2ad1ad95c47222076c",
-    "/6-es2015.7df6fa31b309aabea75f.js": "08c585ad1284578efe05d853ebd45b95d6846d65",
-    "/6-es5.7df6fa31b309aabea75f.js": "1d978c24c6366f3fbdd305a102a1e0c1a06dad40",
+    "/6-es2015.f30c552d78fa3dead9c7.js": "b4133623b3caf4e8a463bc5cb6bc90868fa8cdac",
+    "/6-es5.f30c552d78fa3dead9c7.js": "4dee0f66c09ee3dd62e6dfcfddf11b59e499143b",
     "/7-es2015.0e085ceff835dcf00999.js": "6d290c7994a458152831056b44146560a0d07e35",
     "/7-es5.0e085ceff835dcf00999.js": "73aaf48027d323af88e66515e453cf46f56e3b79",
     "/assets/404 Error Page not Found with people connecting a plug-pana.png": "a2d069de0e9d778a1c5967534a7059ef1ac1396c",
@@ -168,9 +171,10 @@
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
-    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
-    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
-    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-192x192.png": "48c1ace6836da35e13cf6fd6919e4452bc2eea47",
+    "/assets/icons/icon-256x256.png": "95a09c51f8973efbcb1d3b7da05c197deb547b0b",
+    "/assets/icons/icon-384x384.png": "f3677b833c7e839204a63be72b6d9423ce1ff7e1",
+    "/assets/icons/icon-512x512.png": "99b30d004d1acf015de8e6fa6181179e96bb6262",
     "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/assets/icons/logout (1).png": "0b28db106b99f98c924bcc61dcd45c651a481ad9",
@@ -182,6 +186,7 @@
     "/assets/icons/sign-up.png": "a5c8448edc7afdfc5ce380a610cd1991bcde83ce",
     "/assets/icons/stories.png": "bc1078325c7e1042f850085b06593d142141fc75",
     "/assets/icons/users.png": "50437a02aa9de9e2efd2146c1daa8ac8af69d6ea",
+    "/assets/manifest.zip": "189eac6f7b436ad2ba988394b63dc9b303ad0faa",
     "/assets/pngtree mobile short message.txt": "4e636bb09367cd2f21c4872ed154adb4071ed957",
     "/assets/removedbg/background-removebg-preview.png": "6200bd273faadb754fa4e76875f64386b73b63f5",
     "/assets/removedbg/undraw_friends_online_klj6-removebg-preview.png": "21ac5eb96ab57c9b2f6ee2e4d3d65d5d99087a12",
@@ -203,14 +208,14 @@
     "/common-es2015.5b6a6f79ba28ea1ad0d4.js": "6fc8c484f3880d2f1b82d1a56bf06f37a099dfc6",
     "/common-es5.5b6a6f79ba28ea1ad0d4.js": "17ec47ca343cb0c9f502fb377be83aeebd5412ec",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "66b31e7e984e32eebad35344f4c6be879c063911",
-    "/main-es2015.4f8ec3498a7d6659b6cc.js": "5c4e4f106b7eab36570992260672152953f4234e",
-    "/main-es5.4f8ec3498a7d6659b6cc.js": "292641da3445b671458d20705127b7d2727a990e",
-    "/manifest.webmanifest": "9eee1555c516a0f24f1c92ae751e61bdde2b5461",
+    "/index.html": "398e43bcb50cb17241bf893506afdbff3835f1a1",
+    "/main-es2015.392e42c6247ce055414c.js": "5b24e2bcc2c554d82c764691dc2590a66a2f0123",
+    "/main-es5.392e42c6247ce055414c.js": "844bc40aaf0ae546a77a66dd3d90868281381bb5",
+    "/manifest.webmanifest": "c3af1cedc1632a0fee000f80925df207fabb5f4c",
     "/polyfills-es2015.ce6159eca758d80e5f5f.js": "b78b8088f5bb6ae9754a297fd748c94377d7a23f",
     "/polyfills-es5.630c9cbb57ccd5c170c5.js": "b8a56e2e6c79e51288cb462645dc8c442fc1b4fd",
-    "/runtime-es2015.6dff384f9056a1eda573.js": "41deb6fdbf24c63e532aacb1110592c4b6fbf8af",
-    "/runtime-es5.6dff384f9056a1eda573.js": "92631076839b93b1a149af8eb39455ad1aa37972",
+    "/runtime-es2015.f28c16c2b3029632c216.js": "415dc75d4ee4efcb30fa84f889e4d34c9d5ca8c4",
+    "/runtime-es5.f28c16c2b3029632c216.js": "65e3493ecc73920fcec22dc874bbe5376a62cd3f",
     "/scripts.9fb1828ac7a95da6c7ed.js": "eacef03d204d3bdc7f87f56a32146609340a7b50",
     "/styles.8b644351156044c6b3b6.css": "c622b19def44cf5eefb67a7f77db71e096995a91"
   },

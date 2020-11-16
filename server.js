@@ -9,8 +9,8 @@ const bcrypt = require('bcrypt');
 const sendMail = require('./mail').sendMail;
 const buildLink = require('./mail').buildLink;
 const upload = require('./multerConfig'); 
-const { connections } = require('mongoose');
-const multer = require('multer');
+const webpush = require('web-push');
+
 //const http = require('http');
 
 
@@ -36,6 +36,17 @@ client.connect((err, con)=>{
         console.log("sorry couldn't connect to MongoDB");
     }
 });
+
+const vapidKeys = {
+    "publicKey": process.env.publicKey,
+    "privateKey":process.env.privateKey
+};
+
+webpush.setVapidDetails(
+    'mailto:' + process.env.email,
+    vapidKeys.publicKey,
+    vapidKeys.privateKey
+);
 
 
 app.use(cors());
@@ -656,7 +667,7 @@ app.post('/request-connection/:email',bodyParser.json(), async(req, res)=>{
         if(!userData) throw new Error("user Data not present");
         
         let _idUser = userData._id;
-        var data = await collection.updateOne({_id:  ObjectId(friendId)},{$addToSet: {"requests": {friendId:_idUser}}});
+        var data = await collection.findOneAndUpdate({_id:  ObjectId(friendId)},{$addToSet: {"requests": {friendId:_idUser}}}, {returnOriginal: false});
 
         if(data.nModified == 0) throw new Error("sorry could andd the connection");   
              
@@ -665,6 +676,11 @@ app.post('/request-connection/:email',bodyParser.json(), async(req, res)=>{
             status: 200,
             message: "request was sent"
         });
+        
+        /* add some filter here so the push noti doesn't execute all the time */
+        console.log(friendId);
+        sendNewsletter(friendId, userData.firstname);
+        
 
     }catch(e){
         console.error(e);
@@ -843,4 +859,60 @@ app.post("/message-picture", upload.single('messagePic'), async(req, res)=>{
             message: "couldn't upload the picture"
           });
     }
-} )
+});
+
+app.post('/subscribe/:userUniqueId', async(req, res)=>{
+    try {
+        const collection = connectedObj.db(Dbname).collection('subscriptions');
+        req.body.userUniqueId = req.params.userUniqueId;
+        console.log(req.params);
+        await collection.deleteMany({userUniqueId: req.params.userUniqueId});
+        const create = await collection.insertOne(req.body);
+
+        res.status(201).json({status: true, message: "notification turned on"});
+    } catch (error) {
+        console.log("hello");
+        console.log(error);
+        res.status(505).json({status: false, message: "sorry notification couldn't be turned on"});
+    }
+});
+
+app.get('/all-subs', async(req, res)=>{
+        const collection = connectedObj.db(Dbname).collection('subscriptions');
+        const data  = await collection.find({}).toArray();
+        res.send(data);
+})
+
+//app.route('/send-newsletters').post(sendNewsletter);
+
+async function sendNewsletter(userUniqueId, firstname) {
+    console.log(userUniqueId);
+    const allSubscriptions = await connectedObj.db(Dbname).collection('subscriptions').find({userUniqueId: userUniqueId}).toArray();
+
+    console.log('Total subscriptions', allSubscriptions.length);
+
+    const notificationPayload = {
+        "notification": {
+            "title": "new connection request",
+            "body": "you have new connection request from " + firstname,
+            "icon": "assets/icon-192x192.png",
+            "vibrate": [100, 50, 100],
+            "data": {
+                "dateOfArrival": Date.now(),
+                "primaryKey": 1
+            },
+            "actions": [{
+                "action": "explore",
+                "title": "Go to the site"
+            }]
+        }
+    };
+    
+    Promise.all(allSubscriptions.map(sub => webpush.sendNotification(
+        sub, JSON.stringify(notificationPayload) )))
+        .then(() => console.log('Newsletter sent successfully.'))
+        .catch(err => {
+            console.error("Error sending notification, reason: ", err);
+            res.sendStatus(500);
+        });
+}
