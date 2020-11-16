@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1605501578806,
+  "timestamp": 1605504518427,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -108,7 +108,7 @@
     {
       "name": "profile",
       "patterns": [
-        "https:\\/\\/chatep\\.azurewebsites\\.net\\/get-details\\/"
+        "https:\\/\\/chatep\\.azurewebsites\\.net\\/.*"
       ],
       "strategy": "freshness",
       "maxSize": 20,
