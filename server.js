@@ -43,7 +43,7 @@ const vapidKeys = {
 };
 
 webpush.setVapidDetails(
-    'mailto:' + process.env.email,
+    'mailto:deepaksharma526271@gmail.com',
     vapidKeys.publicKey,
     vapidKeys.privateKey
 );
