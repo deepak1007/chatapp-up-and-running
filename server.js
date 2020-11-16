@@ -26,7 +26,7 @@ const server = app.listen(process.env.PORT || 8000, () => {
 const io = soc.listen(server);
 /*var client  = new MongoClient('', {useNewUrlParser:true,useUnifiedTopology: true});
 */
-var client  = new MongoClient(process.env.CONNECTIONURL || 'mongodb://localhost:27017/', {useNewUrlParser:true,useUnifiedTopology: true});
+var client  = new MongoClient(process.env.CUSTOMCONNSTR_CONNECTIONURL || 'mongodb://localhost:27017/', {useNewUrlParser:true,useUnifiedTopology: true});
 client.connect((err, con)=>{
     if(!err){
         connectedObj = con;
