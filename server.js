@@ -44,7 +44,9 @@ app.use(cors());
     optionsSuccessStatus: 200,
     credentials: true
 }));*/
-app.use(express.static('chatapp'));
+app.use(express.static('chatapp', {cacheControl: true, setHeaders: (res, path)=>{
+    res.setHeader('Cache-Control', 'public, max-age=360000');
+}}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/upload', {cacheControl: true, setHeaders: (res, path)=>{
