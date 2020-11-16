@@ -38,8 +38,8 @@ client.connect((err, con)=>{
 });
 
 const vapidKeys = {
-    "publicKey": process.env.publicKey,
-    "privateKey":process.env.privateKey
+    "publicKey":"BPwTxxOAqBDmED_ioW1v8YjKFnzauOmPgW2cUfQ0e9JuuAWrdeVIoFgL9pbd9DonG4eHZzDZzqLd6JeOa83THtk",
+    "privateKey":"SudSzsbPkw-dNJ1pmFVPhv0o6_saXM5rhoPq56CeFn0"
 };
 
 webpush.setVapidDetails(
