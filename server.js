@@ -26,7 +26,7 @@ const server = app.listen(process.env.PORT || 8000, () => {
 const io = soc.listen(server);
 /*var client  = new MongoClient('', {useNewUrlParser:true,useUnifiedTopology: true});
 */
-var client  = new MongoClient(process.env.CUSTOMCONNSTR_CONNECTIONURL || 'mongodb://localhost:27017/', {useNewUrlParser:true,useUnifiedTopology: true});
+var client  = new MongoClient("mongodb+srv://custom:111111111@deepak.adqsa.mongodb.net/ChatAppDB?retryWrites=true&w=majority", {useNewUrlParser:true,useUnifiedTopology: true});
 client.connect((err, con)=>{
     if(!err){
         connectedObj = con;
@@ -86,7 +86,7 @@ var univarsal = {
   password:"",
   roomPic:'../../assets/icons/Infinity-1.9s-221px.png', 
   roomCode:"XyzaBc1Kzsxsw3", 
-  roomLink:'http://localhost:4200/chat-dashboard/message-area',
+  roomLink:'https://chatep.azurewebsite.net/dashboardmodule/message-area',
   admin:"", 
   roomMembers:0, 
   memberDetails:{}
@@ -325,7 +325,7 @@ app.get('/', (req, res)=>{
 //routes----------------------------------------------->
 app.post('/login', bodyParser.json(), (req, res)=>{
     var collection = connectedObj.db(Dbname).collection('users');
-    var email = req.body.email;
+    var email =   (req.body.email).toLowerCase();
     var password = req.body.password;
     collection.find({email:email, password:password}).toArray((err, data)=> {
         if(!err && data.length>0){
@@ -351,8 +351,9 @@ app.post('/sign-up', bodyParser.json(), (req, res)=>{
     let hash = bcrypt.hashSync(req.body.email+req.body.firstname+req.body.password, 10);
     req.body['hash'] = hash;
     req.body['auth'] = 0;
-    collection.find({email:req.body.email}).toArray((err,data)=>{
+    collection.find({email:(req.body.email).toLowerCase()}).toArray((err,data)=>{
         if(!err && data.length==0){
+            req.body.email = (req.body.email).toLowerCase();
             collection.insertOne(req.body,(err, innerdata)=>{
                 if(!err){
                    
@@ -381,8 +382,6 @@ app.post('/verify-account', bodyParser.json(), (req, res)=>{
                         console.log("done");
                         res.send({status:true, data:{email:data[0].email}});
                     }else{
-                        console.log(innerErr);
-                        console.log(innerData);
                         res.send({status:false, data:{err:"sorry couldn't update your account"}});
                     }
               });
@@ -394,7 +393,7 @@ app.post('/verify-account', bodyParser.json(), (req, res)=>{
 
 app.get('/get-details/:email', (req, res)=>{
     var collection = connectedObj.db(Dbname).collection("users");
-    collection.find({email:req.params['email']}).toArray((err,data)=>{
+    collection.find({email:(req.params['email']).toLowerCase()}).toArray((err,data)=>{
        if(!err && data.length>0){
            var fullname = data[0].firstname + " " + data[0].lastname;
            res.send({status:"200" , data:{FullName:fullname , email:data[0].email, password: data[0].password, about:data[0].about||"", gender:data[0].gender||''}});
@@ -455,7 +454,7 @@ app.post("/upload-profile-picture/:email", upload.single('profilePic',), (req, r
                 console.log('Your file has been received successfully');
                 return res.send({
                   success: true,
-                  proPic_src : "http://localhost:8000/"+req.file.filename
+                  proPic_src : "http://chatep.azurewebsites.net/"+req.file.filename
                 })
             }
           
@@ -544,7 +543,7 @@ app.post("/create-room", bodyParser.json(), (req, res)=>{
                  roomPic:req.body.roomPic, 
                  admin:req.body.creator, 
                  roomCode:roomCode, 
-                 roomLink:'http://localhost:4200/chat-dashboard/message-area', 
+                 roomLink:'https://chatep.azurewebsites.net/dashboardmodule/message-area', 
                  roomMembers:0,
                  memberDetails:{}
             };
@@ -646,7 +645,7 @@ app.post("/room_pictures/:type/:email", upload.single('profilePic',), (req, res)
                 console.log('Your file has been received successfully');
                 return res.send({
                   success: true,
-                  roomPic_src : "http://localhost:8000/room_pictures/"+req.file.filename
+                  roomPic_src : "http://chatep.azurewebsites.net/room_pictures/"+req.file.filename
                 })
             }
           
@@ -849,7 +848,7 @@ app.post("/message-picture", upload.single('messagePic'), async(req, res)=>{
                     return res.status(201).send({
                       status: true,
                       message: "photo uploaded",
-                      messagePic: "http://localhost:8000/message_pictures/" + req.file.filename
+                      messagePic: "http://chatep.azurewebsites.net/message_pictures/" + req.file.filename
                     })
                 }
     } catch (error) {
