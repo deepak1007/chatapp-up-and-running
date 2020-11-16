@@ -38,6 +38,9 @@ MIT
 @angular/router
 MIT
 
+@angular/service-worker
+MIT
+
 @loadingio/loading.css
 MIT
 The MIT License (MIT)
