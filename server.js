@@ -26,7 +26,7 @@ const server = app.listen(process.env.PORT || 8000, () => {
 const io = soc.listen(server);
 /*var client  = new MongoClient('', {useNewUrlParser:true,useUnifiedTopology: true});
 */
-var client  = new MongoClient("mongodb+srv://custom:111111111@deepak.adqsa.mongodb.net/ChatAppDB?retryWrites=true&w=majority", {useNewUrlParser:true,useUnifiedTopology: true});
+var client  = new MongoClient(process.env.CUSTOMCONNSTR_CONNECTIONURL || "mongodb://localhost:27017/", {useNewUrlParser:true,useUnifiedTopology: true});
 client.connect((err, con)=>{
     if(!err){
         connectedObj = con;
@@ -38,12 +38,12 @@ client.connect((err, con)=>{
 });
 
 const vapidKeys = {
-    "publicKey":"BPwTxxOAqBDmED_ioW1v8YjKFnzauOmPgW2cUfQ0e9JuuAWrdeVIoFgL9pbd9DonG4eHZzDZzqLd6JeOa83THtk",
-    "privateKey":"SudSzsbPkw-dNJ1pmFVPhv0o6_saXM5rhoPq56CeFn0"
+    "publicKey":process.env.publicKey,
+    "privateKey":process.env.privateKey
 };
 
 webpush.setVapidDetails(
-    'mailto:deepaksharma526271@gmail.com',
+    'mailto:' + process.env.email,
     vapidKeys.publicKey,
     vapidKeys.privateKey
 );
@@ -329,12 +329,12 @@ app.post('/login', bodyParser.json(), (req, res)=>{
     var password = req.body.password;
     collection.find({email:email, password:password}).toArray((err, data)=> {
         if(!err && data.length>0){
-            //if(data[0].auth==0){
+            if(data[0].auth==0){
                 var  fullname =  data[0].firstname + data[0].lastname;
                 res.send({status:true, data:{FullName: fullname , email:email, password:password, about:data.about, gender:data.gender, uniqueUserId: data[0]._id}}); 
-           // }else{
-           //     res.send({status:false, data:{err:"please verify your account first with the link in your email"}})
-           // }
+            }else{
+               res.send({status:false, data:{err:"please verify your account first with the link in your email"}})
+            }
             
         }
         else{
