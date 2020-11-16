@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1605492520233,
+  "timestamp": 1605501578806,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -8,21 +8,21 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/6-es2015.a6e823f90170b9addf1b.js",
-        "/6-es5.a6e823f90170b9addf1b.js",
+        "/6-es2015.7df6fa31b309aabea75f.js",
+        "/6-es5.7df6fa31b309aabea75f.js",
         "/7-es2015.0e085ceff835dcf00999.js",
         "/7-es5.0e085ceff835dcf00999.js",
         "/common-es2015.5b6a6f79ba28ea1ad0d4.js",
         "/common-es5.5b6a6f79ba28ea1ad0d4.js",
         "/favicon.ico",
         "/index.html",
-        "/main-es2015.8ff7e0b48f5ddf049c4b.js",
-        "/main-es5.8ff7e0b48f5ddf049c4b.js",
+        "/main-es2015.4f8ec3498a7d6659b6cc.js",
+        "/main-es5.4f8ec3498a7d6659b6cc.js",
         "/manifest.webmanifest",
         "/polyfills-es2015.ce6159eca758d80e5f5f.js",
         "/polyfills-es5.630c9cbb57ccd5c170c5.js",
-        "/runtime-es2015.9a487a18b465c4da765e.js",
-        "/runtime-es5.9a487a18b465c4da765e.js",
+        "/runtime-es2015.6dff384f9056a1eda573.js",
+        "/runtime-es5.6dff384f9056a1eda573.js",
         "/scripts.9fb1828ac7a95da6c7ed.js",
         "/styles.8b644351156044c6b3b6.css"
       ],
@@ -40,6 +40,7 @@
         "/assets/5267.jpg",
         "/assets/7118856.zip",
         "/assets/Alone-rafiki.png",
+        "/assets/AppImages.zip",
         "/assets/New Text Document.txt",
         "/assets/Social life-bro.png",
         "/assets/background.jpg",
@@ -51,6 +52,12 @@
         "/assets/icons/Infinity-1.9s-221px.png",
         "/assets/icons/account.png",
         "/assets/icons/add-user.png",
+        "/assets/icons/android-launchericon-144-144.png",
+        "/assets/icons/android-launchericon-192-192.png",
+        "/assets/icons/android-launchericon-48-48.png",
+        "/assets/icons/android-launchericon-512-512.png",
+        "/assets/icons/android-launchericon-72-72.png",
+        "/assets/icons/android-launchericon-96-96.png",
         "/assets/icons/chat-bubble.png",
         "/assets/icons/chat.png",
         "/assets/icons/chat.txt",
@@ -97,11 +104,34 @@
       "patterns": []
     }
   ],
-  "dataGroups": [],
+  "dataGroups": [
+    {
+      "name": "profile",
+      "patterns": [
+        "https:\\/\\/chatep\\.azurewebsites\\.net\\/get-details\\/"
+      ],
+      "strategy": "freshness",
+      "maxSize": 20,
+      "maxAge": 43200000,
+      "timeoutMs": 5000,
+      "version": 1
+    },
+    {
+      "name": "friends",
+      "patterns": [
+        "https:\\/\\/chatep\\.azurewebsites\\.net\\/get-connection-list\\/"
+      ],
+      "strategy": "freshness",
+      "maxSize": 20,
+      "maxAge": 43200000,
+      "timeoutMs": 5000,
+      "version": 1
+    }
+  ],
   "hashTable": {
     "/5267.10fe5bf138ef6b968654.jpg": "a7742ae32095b9036a809d2ad1ad95c47222076c",
-    "/6-es2015.a6e823f90170b9addf1b.js": "8bcfa0ba323a5a4e1e6a184422509f400ae79b54",
-    "/6-es5.a6e823f90170b9addf1b.js": "a386aae776983cd664531615cf6a7b89dfe87cfe",
+    "/6-es2015.7df6fa31b309aabea75f.js": "08c585ad1284578efe05d853ebd45b95d6846d65",
+    "/6-es5.7df6fa31b309aabea75f.js": "1d978c24c6366f3fbdd305a102a1e0c1a06dad40",
     "/7-es2015.0e085ceff835dcf00999.js": "6d290c7994a458152831056b44146560a0d07e35",
     "/7-es5.0e085ceff835dcf00999.js": "73aaf48027d323af88e66515e453cf46f56e3b79",
     "/assets/404 Error Page not Found with people connecting a plug-pana.png": "a2d069de0e9d778a1c5967534a7059ef1ac1396c",
@@ -110,6 +140,7 @@
     "/assets/5267.jpg": "a7742ae32095b9036a809d2ad1ad95c47222076c",
     "/assets/7118856.zip": "15590fd2024576c3a456973708dc19df5516a283",
     "/assets/Alone-rafiki.png": "350cc59acdcf0d0f5484e9ceaab73cf9cb37906d",
+    "/assets/AppImages.zip": "c625ab5e093ccf3a74eb6548c553bc005134e1b1",
     "/assets/New Text Document.txt": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
     "/assets/Social life-bro.png": "874e3997b639d6d8808f65b6e4c539ea8c677a3e",
     "/assets/background.jpg": "09d1c0a315ef84e0b3bb9895f03bf5ac6c5b2483",
@@ -121,6 +152,12 @@
     "/assets/icons/Infinity-1.9s-221px.png": "205a24eac4a333542a5385f9ac2db1473373839f",
     "/assets/icons/account.png": "ed8820e72a34bd0a8449c90497ce984f87a360e7",
     "/assets/icons/add-user.png": "11f3a97a41cd7fb98f38694ea9fdbfa9aefa995c",
+    "/assets/icons/android-launchericon-144-144.png": "b309fd724ef9a79ef49b6b367ba8a7e1b7e6483c",
+    "/assets/icons/android-launchericon-192-192.png": "622d25d28a7ef9249c8d0dcf7ea4c8ca2425a79b",
+    "/assets/icons/android-launchericon-48-48.png": "9724ce4c9dda446fcd661e657b7919604d260076",
+    "/assets/icons/android-launchericon-512-512.png": "98fc48e2a0a6b128f4a7dd2ab7a0717cd9927b70",
+    "/assets/icons/android-launchericon-72-72.png": "0c421656bb885b49666a8a1f75b2eab013404ed6",
+    "/assets/icons/android-launchericon-96-96.png": "551e0621cf9d1dc9ccb5a76f915cea41225f521e",
     "/assets/icons/chat-bubble.png": "b816f7bb54f4e383255be7a366861423f7aedb1f",
     "/assets/icons/chat.png": "9db6020d41036d38fb52fc6eab22ed1acca18bd4",
     "/assets/icons/chat.txt": "60555ea7751f9c15039abd803982fe1903df8727",
@@ -166,14 +203,14 @@
     "/common-es2015.5b6a6f79ba28ea1ad0d4.js": "6fc8c484f3880d2f1b82d1a56bf06f37a099dfc6",
     "/common-es5.5b6a6f79ba28ea1ad0d4.js": "17ec47ca343cb0c9f502fb377be83aeebd5412ec",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "e88792e8e1f5d1c376c40959c4eccb62060fa46f",
-    "/main-es2015.8ff7e0b48f5ddf049c4b.js": "d5d595756a994526f1bee2863a771c64ae31745e",
-    "/main-es5.8ff7e0b48f5ddf049c4b.js": "b44f5c0ec3f963a5ff7d3b7950c3f98bfed15eaf",
-    "/manifest.webmanifest": "b548b227e333699f53dcfa8cfe33324e1fa84284",
+    "/index.html": "66b31e7e984e32eebad35344f4c6be879c063911",
+    "/main-es2015.4f8ec3498a7d6659b6cc.js": "5c4e4f106b7eab36570992260672152953f4234e",
+    "/main-es5.4f8ec3498a7d6659b6cc.js": "292641da3445b671458d20705127b7d2727a990e",
+    "/manifest.webmanifest": "9eee1555c516a0f24f1c92ae751e61bdde2b5461",
     "/polyfills-es2015.ce6159eca758d80e5f5f.js": "b78b8088f5bb6ae9754a297fd748c94377d7a23f",
     "/polyfills-es5.630c9cbb57ccd5c170c5.js": "b8a56e2e6c79e51288cb462645dc8c442fc1b4fd",
-    "/runtime-es2015.9a487a18b465c4da765e.js": "4433de57ef5e40b6eb2a7a478f526cd76b87f0a0",
-    "/runtime-es5.9a487a18b465c4da765e.js": "8f28ebfda5db079388d6091d44bbc3dc38d9daa8",
+    "/runtime-es2015.6dff384f9056a1eda573.js": "41deb6fdbf24c63e532aacb1110592c4b6fbf8af",
+    "/runtime-es5.6dff384f9056a1eda573.js": "92631076839b93b1a149af8eb39455ad1aa37972",
     "/scripts.9fb1828ac7a95da6c7ed.js": "eacef03d204d3bdc7f87f56a32146609340a7b50",
     "/styles.8b644351156044c6b3b6.css": "c622b19def44cf5eefb67a7f77db71e096995a91"
   },
