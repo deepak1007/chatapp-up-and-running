@@ -485,9 +485,10 @@ app.get("/view-profile/:id/:userDbId/:myId", bodyParser.json(), (req,res)=>{
 
 
     if(req.params.id != "false"){
-        id = req.params['id'];  
+        
+        email = id_to_email[req.params.id];  
         queryObj = {
-            _id : ObjectId(id)
+            email : email
         }
     }else{
         _id = req.params.userDbId;
@@ -703,7 +704,6 @@ app.post('/add-friend/:email',bodyParser.json(), async(req, res)=>{
             
         var data = await collection.updateOne({email:userEmail},{"$pull": {"requests": {"friendId": ObjectId(friendId)}}});
         
-        console.log(data);
         res.send({
             status: 200,
             message: "new connection was added",
@@ -825,7 +825,9 @@ app.delete("/remove-connection/:email/:friendId", async(req, res)=>{
         const userEmail  =  req.params.email;
         const friendId = req.params.friendId;
         const collection = connectedObj.db(Dbname).collection('users')
-        var data = await collection.updateOne({email:userEmail},{$pull: {"connections": {friendId: ObjectId(friendId)}}})
+        var data = await collection.findOneAndUpdate({email:userEmail},{$pull: {"connections": {friendId: ObjectId(friendId)}}});
+        
+        var data  = await collection.updateOne({_id : ObjectId(friendId)}, {$pull: {"connections" : {friendId: ObjectId(data.value._id)}}});
         res.status(200).json({status: true, message: "friend removed"});
     } catch (error) {
         console.log(error);
