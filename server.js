@@ -38,7 +38,7 @@ client.connect((err, con)=>{
 });
 
 const vapidKeys = {
-    "publicKey": process.env.publicKey,
+    "publicKey":process.env.publicKey,
     "privateKey":process.env.privateKey
 };
 
@@ -329,12 +329,12 @@ app.post('/login', bodyParser.json(), (req, res)=>{
     var password = req.body.password;
     collection.find({email:email, password:password}).toArray((err, data)=> {
         if(!err && data.length>0){
-            //if(data[0].auth==0){
+            if(data[0].auth==1){
                 var  fullname =  data[0].firstname + data[0].lastname;
                 res.send({status:true, data:{FullName: fullname , email:email, password:password, about:data.about, gender:data.gender, uniqueUserId: data[0]._id}}); 
-           // }else{
-           //     res.send({status:false, data:{err:"please verify your account first with the link in your email"}})
-           // }
+            }else{
+               res.send({status:false, data:{err:"please verify your account first with the link in your email"}})
+            }
             
         }
         else{
